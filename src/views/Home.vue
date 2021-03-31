@@ -8,17 +8,17 @@
 
     <teleport to="body">
       <app-modal v-if="modal" title="Создать заявку" @close="modal = false">
-        <request-modal></request-modal>
+        <request-modal @created="modal = false" />
       </app-modal>
     </teleport>
   </app-page>
 </template>
 
 <script>
-import AppPage from "../components/ui/AppPage";
-import RequestTable from "../components/request/RequestTable";
 import { ref } from "vue";
+import AppPage from "../components/ui/AppPage";
 import AppModal from "../components/ui/AppModal";
+import RequestTable from "../components/request/RequestTable";
 import RequestModal from "../components/request/RequestModal";
 
 export default {
