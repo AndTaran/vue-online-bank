@@ -9,10 +9,10 @@ export default {
     };
   },
   mutations: {
-    setRequest(state, requests) {
+    setRequests(state, requests) {
       state.requests = requests;
     },
-    addRequests(state, request) {
+    addRequest(state, request) {
       state.requests.push(request);
     },
   },
@@ -21,10 +21,11 @@ export default {
       try {
         const token = store.getters["auth/token"];
         const { data } = await axios.post(
-          `requests.json?auth=${token}`,
+          `/requests.json?auth=${token}`,
           payload
         );
-        commit("addRequests", { ...payload, id: data.name });
+        console.log(data);
+        commit("addRequest", { ...payload, id: data.name });
         dispatch(
           "setMessage",
           {
@@ -33,6 +34,24 @@ export default {
           },
           { root: true }
         );
+      } catch (error) {
+        dispatch(
+          "setMessage",
+          {
+            value: error.message,
+            type: "danger",
+          },
+          { root: true }
+        );
+      }
+    },
+
+    async load({ commit, dispatch }) {
+      try {
+        const token = store.getters["auth/token"];
+        const { data } = await axios.get(`/requests.json?auth=${token}`);
+        const requests = Object.keys(data).map((id) => ({ ...data[id], id }));
+        commit("setRequests", requests);
       } catch (error) {
         dispatch(
           "setMessage",
