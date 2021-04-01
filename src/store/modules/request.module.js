@@ -24,7 +24,7 @@ export default {
           `requests.json?auth=${token}`,
           payload
         );
-        commit("addRequest", { ...payload, id: data.name });
+        commit("addRequests", { ...payload, id: data.name });
         dispatch(
           "setMessage",
           {
