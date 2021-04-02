@@ -63,6 +63,73 @@ export default {
         );
       }
     },
+    async loadOne({ commit, dispatch }, id) {
+      try {
+        const token = store.getters["auth/token"];
+        const { data } = await axios.get(`/requests/${id}.json?auth=${token}`);
+        return data;
+      } catch (error) {
+        dispatch(
+          "setMessage",
+          {
+            value: error.message,
+            type: "danger",
+          },
+          { root: true }
+        );
+      }
+    },
+    async remove({ dispatch }, id) {
+      try {
+        const token = store.getters["auth/token"];
+        const { data } = await axios.delete(
+          `/requests/${id}.json?auth=${token}`
+        );
+        dispatch(
+          "setMessage",
+          {
+            value: "Заявка успешно удалена",
+            type: "warning",
+          },
+          { root: true }
+        );
+      } catch (error) {
+        dispatch(
+          "setMessage",
+          {
+            value: error.message,
+            type: "danger",
+          },
+          { root: true }
+        );
+      }
+    },
+    async update({ dispatch }, request) {
+      try {
+        const token = store.getters["auth/token"];
+        const { data } = await axios.put(
+          `/requests/${request.id}.json?auth=${token}`,
+          request
+        );
+        dispatch(
+          "setMessage",
+          {
+            value: "Заявка успешно обновлена",
+            type: "primary",
+          },
+          { root: true }
+        );
+      } catch (error) {
+        dispatch(
+          "setMessage",
+          {
+            value: error.message,
+            type: "danger",
+          },
+          { root: true }
+        );
+      }
+    },
   },
   getters: {
     requests(state) {

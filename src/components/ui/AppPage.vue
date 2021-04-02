@@ -1,4 +1,9 @@
 <template>
+  <div class="breadcrumbs" v-if="back">
+    <router-link to="/" class="text-white">
+      Вернуться с списку задач
+    </router-link>
+  </div>
   <div class="card">
     <h1 class="card-title">
       {{ title }}
@@ -14,6 +19,10 @@ export default {
     title: {
       type: String,
       required: true,
+    },
+    back: {
+      type: Boolean,
+      default: false,
     },
   },
   setup(props) {
