@@ -21,7 +21,7 @@ export default {
       warning: "Внимание!",
     };
 
-    const message = computed(() => store.getters.message);
+    const message = computed(() => store.state.message);
     const title = computed(() =>
       message.value ? TITLE_MAP[message.value.type] : null
     );
