@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/dist/precache-manifest.955890ab31a00583939802302df81679.js"
+  "/precache-manifest.4ff735f91ed8d69fc981dd6b5c7a0b37.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "vue-online-bank"});
