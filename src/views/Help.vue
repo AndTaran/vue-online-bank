@@ -15,8 +15,16 @@ import QuestionItem from "../components/question/QuestionItem";
 export default {
   setup() {
     const questions = [
-      { title: "Как создать заявку", text: "Очень просто))" },
-      { title: "Как удалить заявку", text: "Очень сложно))" },
+      {
+        title: "Lorem ipsum dolor sit amet",
+        text:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat doloremque, deleniti aperiam natus eligendi commodi quam pariatur eaque repellat et rerum ex aut nobis voluptatibus illo voluptate beatae exercitationem laboriosam.",
+      },
+      {
+        title: "Quaerat doloremque, deleniti",
+        text:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat doloremque, deleniti aperiam natus eligendi commodi quam pariatur eaque repellat et rerum ex aut nobis voluptatibus illo voluptate beatae exercitationem laboriosam. Quaerat doloremque, deleniti, deleniti aperiam natus eligendi commodi quam pariatur eaque repellat et rerum ex aut nobis voluptatibus illo voluptate beatae exercitationem laboriosam.",
+      },
     ];
 
     return { questions };

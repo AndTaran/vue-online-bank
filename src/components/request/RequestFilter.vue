@@ -34,8 +34,6 @@ export default {
       });
     });
 
-    console.log(status.value);
-
     const isActive = computed(() => name.value || status.value);
 
     return {

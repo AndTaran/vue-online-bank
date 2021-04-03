@@ -58,7 +58,11 @@ export default {
       router.push("/");
     };
     const update = async () => {
-      const data = { ...request, status: status.value, id: route.params.id };
+      const data = {
+        ...request.value,
+        status: status.value,
+        id: route.params.id,
+      };
       await store.dispatch("request/update", data);
       request.value.status = status.value;
     };
